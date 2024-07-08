@@ -1,2 +1,2 @@
 # FastAPI-practicum
-This repo to test and explore full-stack development
+This repo is to test and explore full-stack development
