@@ -8,12 +8,22 @@ correlations = Table(
     metadata,
     Column("SECID", String, primary_key=True),
     Column("FXSECID", String, primary_key=True),
-    Column("TRADEDATE", String),
-    Column("COEFF_CORRELATION",Float),
-    Column("COEFF_BETA",Float)
+    Column("TRADEDATE", TIMESTAMP),
+    Column("COEFF_CORRELATION", Float),
+    Column("COEFF_BETA", Float)
 )
 
-
+quotes = Table(
+    'quotes',
+    metadata,
+    Column("begin", TIMESTAMP),
+    Column("open", Float),
+    Column("close", Float),
+    Column("high", Float),
+    Column("low", Float),
+    Column("value", Float),
+    Column("volume", Integer)
+)
 
 
 
