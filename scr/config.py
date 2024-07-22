@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from sqlalchemy import MetaData
 
+metadata = MetaData()
 
 class Settings(BaseSettings):
     POSTGRES_HOST: str
@@ -15,7 +17,7 @@ class Settings(BaseSettings):
     @property
     def POSTGRES_URL_psycopg(self):
         return f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASS}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
-    
+
     model_config = SettingsConfigDict(env_file=".env")
 
 settings = Settings()

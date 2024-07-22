@@ -75,18 +75,19 @@ def get_moex_data(engine: str,
     https://iss.moex.com/iss/reference/
     """
 
-    session = requests.Session()
-    data = apimoex.get_board_candles(session=session,
-                                     security=seccode, 
-                                     interval=interval,
-                                     start=start,
-                                     end=end,
-                                     board=board,
-                                     market=market,
-                                     engine=engine)
+    url = f'https://iss.moex.com/iss/engines/{engine}/markets/{market}/boards/{board}/securities/{seccode}/candles.json'
+    request_url = (url)
+    arguments = {
+        'from':start,
+        'till':end,
+        'interval':interval
+    }
+    with requests.Session() as session:
+        iss = apimoex.ISSClient(session, request_url, arguments)
+        data_raw = iss.get_all()
     
-    if data and len(data) > 1:
-        quotes = pd.DataFrame(data)
+    if data_raw and len(data_raw) > 0:
+        quotes = pd.DataFrame(data_raw['candles'])
         return quotes
     else:
         print(f"Ошибка при запросе данных (функция: get_moex_data, параметры: {[seccode,interval,start,end,board,market,engine]}): \n{data}")
