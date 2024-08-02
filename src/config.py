@@ -1,7 +1,4 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from sqlalchemy import MetaData
-
-metadata = MetaData()
 
 class Settings(BaseSettings):
     POSTGRES_HOST: str
