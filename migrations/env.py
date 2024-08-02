@@ -1,26 +1,33 @@
 from logging.config import fileConfig
-
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
 from alembic import context
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.config import settings
+from src.database import metadata
+from src.moex.models import *
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-
-
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+config.set_main_option("sqlalchemy.url", settings.POSTGRES_URL_asyncpg + "?async_fallback=True")  
+config.set_main_option("script_location", "migrations")
+config.set_main_option("prepend_sys_path", ".")
+
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
