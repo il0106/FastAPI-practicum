@@ -22,3 +22,4 @@ session_factory = sessionmaker(postgres_sync_engine)
 async_session_factory = async_sessionmaker(postgres_async_engine)
 
 metadata = MetaData()
+
