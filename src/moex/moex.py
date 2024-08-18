@@ -6,9 +6,9 @@ def get_moex_data(engine: str,
                   market: str, 
                   board: str, 
                   seccode: str,
-                  end: str = '2037-12-31 00:00:00',
+                  end: str = '2100-01-01 00:00:00',
                   start: str = '2000-01-01 00:00:00',
-                  interval: int = 10
+                  interval: int = 24
                   ):
     """
     Функция для получения данных с Московской биржи через API iss.moex.
@@ -63,7 +63,7 @@ def get_moex_data(engine: str,
         7 - 1 неделя
         31 - 1 месяц
         4 - 1 квартал
-        Default: 10
+        Default: 24
     
     Возвращает:
     ----------

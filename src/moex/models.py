@@ -5,8 +5,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database import metadata
 
 
-correlations = Table(
-    'correlations',
+correlation = Table(
+    'correlation',
     metadata,
     Column("SECID", String, primary_key=True),
     Column("FXSECID", String, primary_key=True),
@@ -15,8 +15,8 @@ correlations = Table(
     Column("COEFF_BETA", Float, nullable=False)
 )
 
-quotes = Table(
-    'quotes',
+quote = Table(
+    'quote',
     metadata,
     Column("SECID", String, nullable=False),
     Column("begin", TIMESTAMP, nullable=False),
