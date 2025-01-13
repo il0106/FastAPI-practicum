@@ -1,0 +1,25 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue": "^2.23.1",
+    "nuxi": "^3.13.1",
+    "nuxt": "^3.12.4",
+    "usebootstrap": "^3.5.23",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^3.4.4",
+    "@nuxtjs/tailwindcss": "^6.12.1"
+  }
+}
